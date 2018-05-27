@@ -4,6 +4,15 @@ var angularApp = angular.module('game', [])
 
         $scope.info = {};
 
+        game.becomeASponsor = function () {
+            console.log('become a sponsor');
+        };
+
+        game.claimCoins = function () {
+            console.log('Claim coins');
+            claimDailyReward();
+        };
+
         game.loadInfo = function () {
 
         };

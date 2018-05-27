@@ -49,7 +49,15 @@
                     <h3>Jackpot</h3>
                     <h1 ng-bind="info.jackpotSymbol"></h1>
                     <p ng-bind="info.sponsor.text"></p>
-                    <button class="btn btn-success">Become a sponsor</button>
+                    <button ng-show="!info.isNewUser" ng-click="game.becomeASponsor()" class="btn btn-success">
+                        Become a sponsor
+                    </button>
+                    <button ng-show="info.isNewUser" ng-click="game.claimCoins()" class="btn btn-lg btn-success">
+                        Claim first 100 coins
+                    </button>
+
+                    Balance: <p ng-bind="info.user.balance"></p>
+
                 </div>
                 <div class="col-sm-4"></div>
             </div>
@@ -113,9 +121,10 @@
 
 </footer>
 
+<script src="js/nebPay.js"></script>
+<script src="js/nebulas.js"></script>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-
 <script src="js/game/game.js"></script>
 <script src="js/game/nebulas-chain.js"></script>
 <script src="js/main.js"></script>
