@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="game">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Crypto Millionaire Game</title>
+    <link href="node_modules/bootswatch/dist/flatly/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="js/angular/game.js"></script>
+</head>
+<body ng-controller="GameController as game" id="game-app">
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Crypto Millionaire Game</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+            <!--<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">Network ETH (myetherapi.com)</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#">Server 1 - exampleapi.com</a>
+                    <a class="dropdown-item" href="#">Server 2 - exampleapi.com</a>
+                    <a class="dropdown-item" href="#">Server 3 - exampleapi.com</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Add custom server</a>
+                </div>
+            </li>-->
+        </ul>
+
+    </div>
+</nav>
+
+<main role="main">
+    <div class="jumbotron">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4 text-center">
+                    <!--<span>{{game.remaining()}} of {{game.todos.length}} remaining</span>-->
+
+                    <h3>Jackpot</h3>
+                    <h1 ng-bind="info.jackpotSymbol"></h1>
+                    <p ng-bind="info.sponsor.text"></p>
+                    <button class="btn btn-success">Become a sponsor</button>
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+
+
+            <!--<div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <form>
+                        <div class="form-group row">
+                            <label for="ensDomain" class="col-sm-2 col-form-label">ENS Domain</label>
+                            <div class="col-sm-10">
+                                <input type="text" placeholder="ENS Domain" class="form-control" id="ensDomain">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="swarmHash" class="col-sm-2 col-form-label">SWARM Hash</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="swarmHash" placeholder="SWARM Hash">
+                            </div>
+                        </div>
+                    </form>
+
+                    <p>
+                        <button id="saveDomainHash" class="btn btn-success btn-lg float-right" type="button">
+                            Save
+                        </button>
+                    </p>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>-->
+
+        </div>
+    </div>
+    <hr>
+</main>
+
+
+<!-- Modal -->
+<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="messageBody" class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="container">
+
+</footer>
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="js/game/game.js"></script>
+<script src="js/game/nebulas-chain.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

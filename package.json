@@ -1,0 +1,25 @@
+{
+  "name": "dapp-crypto-game",
+  "version": "1.0.0",
+  "description": "Dapp crypto game for Nebulas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgorShadurin/dapp-crypto-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IgorShadurin/dapp-crypto-game/issues"
+  },
+  "homepage": "https://github.com/IgorShadurin/dapp-crypto-game#readme",
+  "dependencies": {
+    "angular": "^1.7.0",
+    "bootstrap": "^4.1.1",
+    "bootswatch": "^4.1.1",
+    "jquery": "^3.3.1"
+  }
+}
