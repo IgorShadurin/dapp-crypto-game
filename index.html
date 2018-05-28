@@ -42,27 +42,59 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <p>Balance: <span ng-bind="info.user.balance"></span> COINS</p>
+                    <p>Miners: <span ng-bind="info.user.items.length"></span></p>
+
+                </div>
                 <div class="col-sm-4 text-center">
                     <!--<span>{{game.remaining()}} of {{game.todos.length}} remaining</span>-->
 
                     <h3>Jackpot</h3>
                     <h1 ng-bind="info.jackpotSymbol"></h1>
-                    <p ng-bind="info.sponsor.text"></p>
+                    <!--<p ng-bind="info.sponsor.text"></p>
                     <button ng-show="!info.isNewUser" ng-click="game.becomeASponsor()" class="btn btn-success">
                         Become a sponsor
-                    </button>
+                    </button>-->
                     <button ng-show="info.isNewUser" ng-click="game.claimCoins()" class="btn btn-lg btn-success">
                         Claim first 100 coins
                     </button>
-
-                    Balance: <p ng-bind="info.user.balance"></p>
 
                 </div>
                 <div class="col-sm-4"></div>
             </div>
 
+            <hr>
 
+            <div class="text-center">
+                <button ng-show="!info.isNewUser" ng-click="game.createMiner()" class="btn btn-success">
+                    Create miner
+                </button>
+            </div>
+
+
+            <ul class="list-inline text-center">
+                <li class="list-inline-item item-miner" ng-repeat="item in game.miners()">
+                    <p>
+                        <img class="miner-image" src="img/video-card.png" alt="">
+                    </p>
+
+                    <p>
+                    <p>
+                        Created: {{game.timeConverter(item.created)}}
+                    </p>
+                    <p>
+                        Claim date: {{game.timeConverter(item.until)}}
+                    </p>
+                    <p>
+                        Claim coins: {{item.price}}
+                    </p>
+                    <button ng-click="game.claimMiner(item.id)" class="btn btn-default">
+                        Claim COINS
+                    </button>
+                    </p>
+                </li>
+            </ul>
             <!--<div class="row">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-8">

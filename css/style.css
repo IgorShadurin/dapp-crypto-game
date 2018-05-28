@@ -2,3 +2,12 @@ body {
     padding-top: 3.5rem;
     background-color: #ecf0f1;
 }
+
+.miner-image {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.item-miner {
+    padding: 8px;
+}

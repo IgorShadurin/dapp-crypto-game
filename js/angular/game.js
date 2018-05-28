@@ -2,7 +2,33 @@ var angularApp = angular.module('game', [])
     .controller('GameController', ['$scope', function ($scope) {
         var game = this;
 
+        $scope.blockchain = null;
         $scope.info = {};
+
+        game.timeConverter=function (UNIX_timestamp){
+            var a = new Date(UNIX_timestamp * 1000);
+            var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            var year = a.getFullYear();
+            var month = months[a.getMonth()];
+            var date = a.getDate();
+            var hour = a.getHours();
+            var min = a.getMinutes();
+            var sec = a.getSeconds();
+            var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+            return time;
+        };
+
+        game.claimMiner = function (id) {
+            console.log('miner id: ' + id);
+        };
+
+        game.miners = function () {
+            if ($scope.info && $scope.info.user && $scope.info.user.items) {
+                return $scope.info.user.items;
+            } else {
+                return [];
+            }
+        };
 
         game.becomeASponsor = function () {
             console.log('become a sponsor');
@@ -11,6 +37,14 @@ var angularApp = angular.module('game', [])
         game.claimCoins = function () {
             console.log('Claim coins');
             claimDailyReward();
+        };
+
+        game.createMiner = function () {
+            console.log('createMiner');
+            $scope.blockchain.createMiner(function (data) {
+                console.log('game.createMiner');
+                console.log(data);
+            });
         };
 
         game.loadInfo = function () {

@@ -10,10 +10,10 @@ setTimeout(function () {
 }, 0);
 
 function init() {
-    game.getInfo(function (info) {
-        $scope.info = info;
-        $scope.$apply();
-    });
+    /*game.getInfo(function (info) {
+     $scope.info = info;
+     $scope.$apply();
+     });*/
 }
 
 setTimeout(function () {
@@ -87,10 +87,26 @@ function claimDailyReward() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    game.getContractBalance(function (data) {
-        console.log('document.addEventListener');
-        console.log(data);
-    });
+function getInfo() {
+    game.getInfo(function (info) {
+        console.log('game.getInfo');
+        console.log(info);
 
+        $scope.blockchain = game;
+        $scope.info = info;
+        $scope.$apply();
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    /*game.getContractBalance(function (data) {
+     console.log('document.addEventListener');
+     console.log(data);
+     });*/
+
+    getInfo();
+    setInterval(function () {
+        getInfo();
+    }, 3000);
 });
+
