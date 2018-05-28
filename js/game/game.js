@@ -3,6 +3,10 @@ var Game = (function () {
         this.blockchain = blockchain;
     }
 
+    Game.prototype.claimMinerCoins = function (onComplete) {
+        this.blockchain.claimMinerCoins(onComplete);
+    };
+
     Game.prototype.createMiner = function (onComplete) {
         this.blockchain.createMiner(onComplete);
     };
@@ -19,8 +23,14 @@ var Game = (function () {
         var self = this;
         this.blockchain.getContractBalance(function (balance) {
             self.blockchain.getUserInfo(function (r) {
+                //console.log(r);
+                var isNewUser = false;
+                if (!r || r.balance === undefined) {
+                    isNewUser = true;
+                }
+
                 var info = {
-                    isNewUser: !r,
+                    isNewUser: isNewUser,
                     user: r,
                     jackpotSum: balance,
                     jackpotSymbol: balance + " " + self.blockchain.symbol,

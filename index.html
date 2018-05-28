@@ -43,22 +43,27 @@
 
             <div class="row">
                 <div class="col-sm-4">
-                    <p>Balance: <span ng-bind="info.user.balance"></span> COINS</p>
-                    <p>Miners: <span ng-bind="info.user.items.length"></span></p>
 
                 </div>
                 <div class="col-sm-4 text-center">
-                    <!--<span>{{game.remaining()}} of {{game.todos.length}} remaining</span>-->
-
-                    <h3>Jackpot</h3>
+                    <!--<h3>Jackpot</h3>
                     <h1 ng-bind="info.jackpotSymbol"></h1>
                     <!--<p ng-bind="info.sponsor.text"></p>
                     <button ng-show="!info.isNewUser" ng-click="game.becomeASponsor()" class="btn btn-success">
                         Become a sponsor
                     </button>-->
-                    <button ng-show="info.isNewUser" ng-click="game.claimCoins()" class="btn btn-lg btn-success">
-                        Claim first 100 coins
-                    </button>
+                    <div ng-show="extensionEnabled">
+                        <h3>Balance: <span ng-bind="info.user.balance?info.user.balance:0"></span> COINS</h3>
+                        <h3>Miners: <span ng-bind="info.user.items.length?info.user.items.length:0"></span></h3>
+
+                        <button ng-show="info.isNewUser" ng-click="game.claimCoins()" class="btn btn-lg btn-success">
+                            Claim first 100 coins for FREE
+                        </button>
+                    </div>
+
+                    <div ng-show="!extensionEnabled">
+                        <p>Loading Nebulas extension...</p>
+                    </div>
 
                 </div>
                 <div class="col-sm-4"></div>
@@ -66,7 +71,7 @@
 
             <hr>
 
-            <div class="text-center">
+            <div ng-show="extensionEnabled" class="text-center">
                 <button ng-show="!info.isNewUser" ng-click="game.createMiner()" class="btn btn-success">
                     Create miner
                 </button>
@@ -89,7 +94,7 @@
                     <p>
                         Claim coins: {{item.price}}
                     </p>
-                    <button ng-click="game.claimMiner(item.id)" class="btn btn-default">
+                    <button ng-click="game.claimMinerCoins(item.id)" class="btn btn-default">
                         Claim COINS
                     </button>
                     </p>

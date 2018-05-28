@@ -13,6 +13,12 @@ var NebulasChain = (function () {
         this.nebPay = new this.NebPay();
     }
 
+    NebulasChain.prototype.claimMinerCoins = function (id, onComplete) {
+        this.nebPay.call(this.contractAddress, 0, "claimMiner", "[\"" + id + "\"]", {
+            listener: onComplete
+        });
+    };
+
     NebulasChain.prototype.createMiner = function (onComplete) {
         var price = 10;
         this.nebPay.call(this.contractAddress, 0, "createMiner", "[\"" + price + "\"]", {
@@ -31,8 +37,8 @@ var NebulasChain = (function () {
     NebulasChain.prototype.getContractBalance = function (onComplete) {
         this.neb.api.getAccountState({address: this.contractAddress}).then(function (resp) {
             var result = resp;
-            console.log('NebulasChain.prototype.getContractBalance');
-            console.log(resp);
+            //console.log('NebulasChain.prototype.getContractBalance');
+            //console.log(resp);
             if (!result) {
                 console.log('return');
                 return;
@@ -65,8 +71,9 @@ var NebulasChain = (function () {
         };
 
         this.neb.api.call(from, dappAddress, value, nonce, gas_price, gas_limit, contract).then(function (resp) {
+            //console.log(resp);
             var result = resp.result;
-            result = JSON.parse(JSON.parse(result));
+            result = JSON.parse(result);
             //console.log("return of rpc call: " + JSON.stringify(result))
 
             //var resultString = JSON.stringify(result);

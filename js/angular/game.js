@@ -2,24 +2,29 @@ var angularApp = angular.module('game', [])
     .controller('GameController', ['$scope', function ($scope) {
         var game = this;
 
+        $scope.extensionEnabled = false;
         $scope.blockchain = null;
         $scope.info = {};
 
-        game.timeConverter=function (UNIX_timestamp){
+        game.timeConverter = function (UNIX_timestamp) {
             var a = new Date(UNIX_timestamp * 1000);
-            var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
             var year = a.getFullYear();
             var month = months[a.getMonth()];
             var date = a.getDate();
             var hour = a.getHours();
             var min = a.getMinutes();
             var sec = a.getSeconds();
-            var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+            var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
             return time;
         };
 
-        game.claimMiner = function (id) {
+        game.claimMinerCoins = function (id) {
             console.log('miner id: ' + id);
+            $scope.blockchain.claimMinerCoins(id, function (data) {
+                console.log('claimMinerCoins coins');
+                console.log(data);
+            });
         };
 
         game.miners = function () {
