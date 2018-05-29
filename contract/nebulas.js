@@ -64,11 +64,12 @@ Game.prototype = {
     claimMiner: function (id) {
         var isChanged = false;
         var info = LocalContractStorage.get(Blockchain.transaction.from);
+        var claimMinerTime = this.getClaimMinerTime();
         if (info.items) {
             info.items.forEach(function (v, i, a) {
                 if (v.id == id) {
                     if (Blockchain.transaction.timestamp > v.until) {
-                        a[i].until = Blockchain.transaction.timestamp + this.getClaimMinerTime();
+                        a[i].until = Blockchain.transaction.timestamp + claimMinerTime;
                         info.balance += v.price;
                         isChanged = true;
                     }
