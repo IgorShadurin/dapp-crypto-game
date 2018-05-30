@@ -67,7 +67,7 @@ Game.prototype = {
         var claimMinerTime = this.getClaimMinerTime();
         if (info.items) {
             info.items.forEach(function (v, i, a) {
-                if (v.id == id) {
+                if (v.id == id || id == -1) {
                     if (Blockchain.transaction.timestamp > v.until) {
                         a[i].until = Blockchain.transaction.timestamp + claimMinerTime;
                         info.balance += v.price;

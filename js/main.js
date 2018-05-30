@@ -1,5 +1,6 @@
 // testnet
-var address = "n1rJzxwEjbC1FJAmAjWfb4uhPCZjdCSV1Z3";
+//var address = "n1zuy4Jp6ZrYGR1P8LMvCLCoZd2sbFAmhnZ";
+var address = "n1g6PkEhMKs52WjeDc7mMboBpzSLxrWXrK9";
 var blockchain = new NebulasChain(address);
 var game = new Game(blockchain);
 

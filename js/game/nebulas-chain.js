@@ -8,7 +8,8 @@ var NebulasChain = (function () {
         this.getAccount();
         this.nebulas = require("nebulas");
         this.neb = new this.nebulas.Neb();
-        this.neb.setRequest(new this.nebulas.HttpRequest("https://testnet.nebulas.io"));
+        //this.neb.setRequest(new this.nebulas.HttpRequest("https://testnet.nebulas.io"));
+        this.neb.setRequest(new this.nebulas.HttpRequest("https://mainnet.nebulas.io"));
         this.NebPay = require("nebpay");
         this.nebPay = new this.NebPay();
     }
